@@ -135,7 +135,7 @@ This same concept becomes extremely useful when exporting interfaces. Let's see 
 (aka `Repository`) interface:
 
 ```go
-type Store interface{
+type Store interface {
     FindProducts(brand, category string, page, limit int) ([]Product, error)
 }
 ```
@@ -145,7 +145,7 @@ to modify callers of this method. Or when you decide to change the pagination st
 you feel implementing those when having an interface like so? We can evaluate a more typed approach:
 
 ```go
-type Store interface{
+type Store interface {
     FindProducts(Brand, Category, Pagination) ([]Product, error)
 }
 ```
@@ -275,3 +275,8 @@ I want to believe so, specially for people like me: the average programmer.
 We're talking about hours or days in some cases...
 Every context and scenario is different and each needs to be evaluated separately, but unless those nanoseconds mean a
 huge difference to you, this is something worth considering.
+
+Is there a next step on this? Absolutely! [Named constructors][named-constructors], which is something you've already
+seen here, is a good step forward.
+
+[named-constructors]: ../constructors
