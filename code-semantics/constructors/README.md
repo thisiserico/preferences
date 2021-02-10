@@ -162,6 +162,8 @@ only where the pagination is defined and where it's actually evaluated. Everythi
 
 There will be times when this seems totally unnecessary.
 But even in those cases, it might help the next maintainer to see something other than `NewSomething`.
-Give it a try!
+Give it a try! Oh, by the way: constructors are a great place to validate using [guard clauses][guard-clauses].
+I invite you to reach that page to see how.
 
 [semantic-types]: ../types
+[guard-clauses]: ../guard-clauses
