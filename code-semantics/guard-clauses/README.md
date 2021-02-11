@@ -105,7 +105,7 @@ First things first: this is what our `Space` struct actually looks like. We don'
 Our first condition required us to own a space in order to remove it:
 
 ```go
-func (s Space) isOwnedBy(userID) bool {
+func (s Space) isOwnedBy(userID string) bool {
     return s.ownerID == userID
 }
 
@@ -159,7 +159,7 @@ func DeleteSpace(id string, whoAmI string) error {
         return errors.New("only empty spaces can be removed")
     }
 
-    if space.IsTheDefault() {
+    if space.isTheDefault() {
         return errors.New("the default space cannot be removed")
     }
 
@@ -170,8 +170,8 @@ func DeleteSpace(id string, whoAmI string) error {
 Nice 🚀 All the details are hidden now, we're only left with actual domain logic of the business!
 At the same time, complex conditions that have to deal with opposites (`!=`) and comparisons (`<` and `>`)
 are no longer a problem. I don't know about you, but I always struggle with those.
-There's one more benefit when tackling "unhappy paths" upfront.
-But we'll see that in the upcoming "semantic testing" chapter ✌️
+There's one more benefit when tackling "unhappy paths" upfront: it will be easier to reason about tests.
+Don't forget to check out the ["semantic testing"][tests] chapter to see how ✌️
 
 For this particular example, several validations were involved. In other scenarios, there might be just one.
 But even if it's just for one, extracting a condition into a guard clause can be beneficial.
@@ -262,3 +262,4 @@ There's no right or wrong here, just different styles and preferences.
 As long as everything is agreed upfront, the benefits still apply.
 
 [semantic-types]: ../types
+[tests]: ../tests
