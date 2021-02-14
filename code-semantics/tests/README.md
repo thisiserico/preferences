@@ -626,8 +626,9 @@ types and languages.
 
 You might have noticed that our production code has no dependencies. Keeping it that way actually helped iterate the
 code and tests throughout this explanation. But I do want to briefly tackle what changes our code and tests would
-require to fit test doubles in 👯 Quick to come, stay tunned!
+require to fit test doubles in 👯 Check it out in the [test doubles][test-doubles] episode.
 
 [fiunchinho]: https://github.com/fiunchinho
 [guard-clauses]: ../guard-clauses
 [types]: ../types
+[test-doubles]: ../test-doubles
