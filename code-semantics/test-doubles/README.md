@@ -275,8 +275,14 @@ Or a similar one: refactoring code is not supposed to modify our tests.
 But it was always hard to see that in practice. Not anymore, as we made it easy to distinguish what the scenario is
 and what our internals are.
 
-Once we've reached this point, we can choose our own adventure: either dig dipper into the builder and mother patterns
-or see the effects of everything we've see on a bigger scale applying hexagonal architecture.
-Regardless, those chapters are still unwritten...
+The most avid gophers might have been asking why would we return a `*Space` instead of `(Space, error)` when fetching.
+The answer is simple: to keep things consistent with other languages that only allow a single return parameter.
+However, as this is not the ideal way to handle this situations in `go`, here's a small challenge for you:
+refactor the existing code so that `FetchSpaceWithID` returns a space and an error.
+And of course, tackle the tests first.
+
+We've mentioned the builder and mother patterns above. And that's a chapter worth checking.
+However, head over to the [functional options][functional-options] one first, as it will come in handy.
 
 [tests]: ../tests
+[functional-options]: ../functional-options
