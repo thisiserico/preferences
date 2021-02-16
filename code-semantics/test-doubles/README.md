@@ -256,9 +256,10 @@ func (t *testDeleteSpace) givenTheDefaultSpaceOfAUser() {
 ```
 
 Each of the stubs prepares a `Space` that, starting with the basic one that would be used for the happy path,
-decorates it in a way to make the particular scenario fail. This could be simplified using a builder pattern or a
-mother approach, but let's leave that for another episode. It's worth mentioning that more complex scenarios might
-end up preparing more than one double. But the same behaviour can be achieved by using the same patterns and principles.
+decorates it in a way to make the particular scenario fail. This could be simplified using the
+[builder or mother patterns][builder-mother], but let's leave that for another episode.
+It's worth mentioning that more complex scenarios might end up preparing more than one double.
+But the same behaviour can be achieved by using the same patterns and principles.
 
 Our tests are now failing, as our production code is still using the old `fetchSpaceWithID` method.
 Let's get rid of that outdated method and use our store instead:
@@ -286,3 +287,4 @@ However, head over to the [functional options][functional-options] one first, as
 
 [tests]: ../tests
 [functional-options]: ../functional-options
+[builder-mother]: ../builder-mother
