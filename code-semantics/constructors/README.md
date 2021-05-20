@@ -138,7 +138,7 @@ func LoadItemsFromPage(page, itemsPerPage int) Pagination {
 We've all seen this at some point.
 But in some scenarios, a pagination that starts after a certain known ID might be useful.
 When asked to swap for that behaviour, we can either introduce a different `Pagination` struct,
-knowing lots of existing methods will have to change.
+knowing upfront that many of the existing methods will have to change.
 Or we can try an incremental approach where the existing pagination is not removed, the new one gets implemented
 on top of that one to be tried out, and we end up removing the old one once the new strategy is successfully running.
 
@@ -161,9 +161,10 @@ Refactoring the existing codebase is now much simpler, as the changes are minima
 only where the pagination is defined and where it's actually evaluated. Everything in between stays the same! ✌️
 
 There will be times when this seems totally unnecessary.
-But even in those cases, it might help the next maintainer to see something other than `NewSomething`.
+But even in those cases, it might help the next maintainer to see something other than `NewSomething`,
+that normally expresses no semantics and might force you to read more code than desired.
 Give it a try! Oh, by the way: constructors are a great place to validate using [guard clauses][guard-clauses].
-I invite you to reach that page to see how.
+I invite you to read that page to see how.
 
 [semantic-types]: ../types
 [guard-clauses]: ../guard-clauses

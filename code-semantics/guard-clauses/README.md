@@ -61,8 +61,6 @@ there's one less element in our mental stack to worry about 🥳
 Now that we know how to write guard clauses, let's do the same for the rest of the method.
 
 ```go
-...
-
 if len(space.resources) > 0 {
     return errors.New("only empty spaces can be removed")
 }
@@ -132,7 +130,7 @@ you'll have one less thing to worry about. If I give you not only the map and th
 instructions on how to navigate it at all times, there's absolutely nothing for you to worry about.
 And you can share the map and instructions with others, no matter their orientation skills,
 that you all will navigate the path in the exact same way 📍
-It's providing common language and understanding for you all.
+It's providing common language and common understanding for you all.
 This is exactly what happens when replacing a condition for a semantic method.
 It's forcing everyone to be on the same page when reading a line of code.
 It's taking away the need to read the actual `isOwnedBy` method.
@@ -176,7 +174,7 @@ Don't forget to check out the ["semantic testing"][tests] chapter to see how ✌
 For this particular example, several validations were involved. In other scenarios, there might be just one.
 But even if it's just for one, extracting a condition into a guard clause can be beneficial.
 Always put yourself in the shoes of a person less familiar with the domain you're working with.
-Make the code easier to understand for them, not faster to parse by a compiler.
+Make the code easier to understand for them, not faster to parse by a compiler nor faster to write by you.
 The times where code was meant to be optimized for a machine are gone.
 Nowadays, high level languages are meant for humans; assembler language is for machines.
 

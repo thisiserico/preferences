@@ -4,7 +4,7 @@ There are times when something needs to be configured: a library, a server, an o
 configuration for each of use of the same concept. The reasons for that vary, but they range from cases where different
 configuration provide complete different behaviour to cases where software is being actively maintained and more options
 are being added. Regardless of the case, most of them fit the same criteria: code that needs to be open to extension
-while maintaining backwards compatibility.
+while maintaining backwards compatibility 🔄
 
 There are two very common approaches to this. The first one, to accept a configuration object where clients can
 indicate the options relevant for them. They might look something like this:
@@ -49,7 +49,7 @@ the new in our example, is more important than the following ones.
 When in reality, all of them are just as important, only the library is not written in a way to make that obvious.
 
 And with that we get to the functional options approach, which can be seen as an iteration on the option above.
-The core concept is the same (and entitles similar problems in that regard): required attributes are explicitly
+The core concept is the same, and entitles similar problems in that regards: required attributes are explicitly
 asked for. On the other hand, optional arguments can be specified making use of variadic capabilities.
 
 ```go
@@ -87,6 +87,7 @@ func WithDebugLogsEnabled() Option {
         api.dumpDebugLogs = true
     }
 }
+
 func RunningOnDryRunMode() Option {
     return func(api *ThirdAPI) {
         api.isDryRun = true

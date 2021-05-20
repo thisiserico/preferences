@@ -17,7 +17,7 @@ However, our end goal is to end up using a new `Store` dependency in order to fe
 This is what our store will look like:
 
 ```go
-//go:generate mockgen -self_package=github.com/thisiserico/how-to/code-semantics/test-doubles/example -package=example -destination=./double_store_test.go -mock_names=Store=StoreDouble github.com/thisiserico/how-to/code-semantics/test-doubles/example Store
+//go:generate mockgen -self_package=github.com/thisiserico/preferences/code-semantics/test-doubles/example -package=example -destination=./double_store_test.go -mock_names=Store=StoreDouble github.com/thisiserico/preferences/code-semantics/test-doubles/example Store
 
 type Store interface {
     FetchSpaceWithID(id string) *Space
@@ -64,8 +64,8 @@ But honestly, we've been risking it here... We've introduced a code change and u
 If each test is telling us exactly how to setup the scenario and what the expectations are, why not work on those
 upfront? That way, we'd transform a passing test into a failing one and work on the actual code to make it pass again.
 Seems like an interesting approach to me, as we'd know exactly when our change went from invalid to valid.
-Testing first is an interesting technique, but that's not what this entry is about.
-Do whatever feels comfortable for you at this point. However, that's the approach I'll follow here.
+Testing first is an interesting technique, but that's not what this chapter is about.
+Do whatever feels comfortable to you at this point. However, that's the approach I'll follow here.
 
 It's time to start making use of the store. The way we were guiding our tests to either succeed or fail was by using
 certain space and owner identifiers. That's exactly what we need to change, but not just yet.
@@ -136,7 +136,7 @@ store: NewStoreDouble(ctrl),
 t.returnedErr = DeleteSpace(t.store, t.spaceID, t.ownerID)
 ```
 
-Our store double is ready to be used! Our dummy is still a dummy, but it's now prepared to actual work.
+Our store double is ready to be used! Our dummy is still a dummy, but it's now prepared to actually work.
 Bear in mind our scenarios are still untouched.
 We've only been changing the way our internals work, why would they have to change? 🤔
 
@@ -206,7 +206,7 @@ t.store.
 ```
 
 That's what we need right on top within the `whenDeletingTheSpace` test helper. We make it come into play only when no
-other expectations have been declared with the `AnyTimes`. Notice that in this case, it's a fully fledged double:
+other expectations have been declared with the `AnyTimes` indicator. Notice that in this case, it's a fully fledged double:
 both a mock and a stub. A mock as we set up an expectation regarding the output parameter and a stub forcing a
 concrete return value. Which in this case, represents a space with no restrictions to be removed.
 
@@ -257,7 +257,7 @@ func (t *testDeleteSpace) givenTheDefaultSpaceOfAUser() {
 
 Each of the stubs prepares a `Space` that, starting with the basic one that would be used for the happy path,
 decorates it in a way to make the particular scenario fail. This could be simplified using the
-[builder or mother patterns][builder-mother], but let's leave that for another episode.
+[builder or mother patterns][builder-mother], but let's leave that for another chapter.
 It's worth mentioning that more complex scenarios might end up preparing more than one double.
 But the same behaviour can be achieved by using the same patterns and principles.
 
@@ -274,7 +274,7 @@ We can now see why that is. If our business logic doesn't change, our scenarios 
 You might have heard that before: tests only need to be modified when business rules change.
 Or a similar one: refactoring code is not supposed to modify our tests.
 But it was always hard to see that in practice. Not anymore, as we made it easy to distinguish what the scenario is
-and what our internals are.
+and what our internals are. We'll see more on this when we discuss clean architectures 😉
 
 The most avid gophers might have been asking why would we return a `*Space` instead of `(Space, error)` when fetching.
 The answer is simple: to keep things consistent with other languages that only allow a single return parameter.

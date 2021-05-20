@@ -1,7 +1,7 @@
 # Semantic types
 
 This is one of those that leads to confusion when seen at first.
-Types are becoming more and more popular, but often times I've seen how the only use we give them is to avoid castings
+Types are becoming more and more popular, but often times I've seen how the only use we give to them is to avoid castings
 and the like. I personally like to use types to hide implementation details on my internals as well, which is a not so
 extended practice in `go`. But overall, if something, their key benefit is that they provide specific semantics to our
 domain logic.
@@ -164,7 +164,7 @@ type ID string
 type Name string
 
 type Price struct{
-    cents int,
+    cents int
 }
 
 type Discount int
@@ -201,12 +201,12 @@ the struct are already hidden, nothing prevent us from modelling such thing:
 ```go
 type Price struct {
     cents int,
-    discount int,
+    discount int
 }
 
-func PriceWithDiscount(basePrice, discount int) Price {
+func PriceWithDiscount(basePriceIncents, discount int) Price {
     return Price {
-        cents: basePrice,
+        cents: basePriceIncents,
         discount: discount,
     }
 }
@@ -260,7 +260,7 @@ If we were to work on it, we'd end up applying the same principles we have up un
 On the other hand, there's no doubts that we're getting the mug for free 💸
 
 At this point, your possibilities are almost endless to represent your domain.
-For instance, imagine having a global `var FullPrice Discount = Discount{asPercentage: 100}` 🤷‍♂️
+For instance, imagine having a global `var FullPrice Discount = DiscountAsPercentage(100)` 🤷‍♂️
 You get the idea. And although possibilities are endless, the limit on this needs to be agreed upon.
 Does everything needs to be a type or only more complex concepts? It depends.
 Do we value consistency across the codebase around this or we better evaluate each occurrence individually? It depends.

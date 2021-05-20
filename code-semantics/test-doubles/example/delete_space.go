@@ -12,7 +12,7 @@ var (
 	errSpaceCouldNotBeRemoved  = errors.New("the space could not be removed")
 )
 
-//go:generate mockgen -self_package=github.com/thisiserico/how-to/code-semantics/test-doubles/example -package=example -destination=./double_store_test.go -mock_names=Store=StoreDouble github.com/thisiserico/how-to/code-semantics/test-doubles/example Store
+//go:generate mockgen -self_package=github.com/thisiserico/preferences/code-semantics/test-doubles/example -package=example -destination=./double_store_test.go -mock_names=Store=StoreDouble github.com/thisiserico/preferences/code-semantics/test-doubles/example Store
 
 type Store interface {
 	FetchSpaceWithID(id string) *Space

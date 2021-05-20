@@ -1,6 +1,6 @@
 # Semantic testing
 
-I like to think that testing is a delicate subject.
+I like to think that testing is a delicate subject 🪶
 There's so many flavors to it, that it's just hard to agree on certain techniques or styles.
 Here are some of the common buzzwords you might have heard regarding this in no specific order:
 testing first, testing after, TDD, BDD, ATDD, outside in, inside out, no testing, unitary, integration, functional, acceptance, end to end... 🥵
@@ -167,7 +167,7 @@ On the other hand, the `spaceID` we request is only useful to force the `fetchSp
 need for this scenario. With the test as we have it now, can we ensure it's testing the case we have at hand? Nope 🙅‍♀️
 We do check that an error is returned, but our test could be failing because of another guard clause.
 Let's address that issue.
-The standard way for doing this in `go` is to provide a bunch of global errors on top of the file.
+One of the ways for doing this in `go` is to provide a bunch of global errors on top of the file.
 Without getting into details, for sure other languages handle this in a different way. If you're using exceptions,
 throwing them as we saw in the [guard clauses][guard-clauses] chapter should be enough.
 
@@ -198,7 +198,7 @@ if err != errNotAnOwnedSpace {
 ...
 ```
 
-Sweet, our tests are now asserting exactly the case they were meant to be.
+Sweet, our tests are now asserting exactly the case they were meant to test.
 Let's test the two remaining validation scenarios, which should look pretty similar.
 
 ```go
@@ -225,7 +225,7 @@ t.Run("errors when removing the default space", func(t *testing.T) {
 
 Hmmm... This works, but I'm starting to feel a lot of repetition 🤔
 If I were to write this as production code, would I improve it somehow?
-I would! I'd apply some of the maintainable code principles, like avoiding repetition!
+I might! I'd probably apply some of the maintainable code principles, like avoiding unnecessary repetition!
 We're writing those constants over and over, deleting a space always work in the same way and the asserts all look the
 same. Let's simplify all that. There are different ways of doing so, but in this case I'll extract certain operations
 into methods.
@@ -272,7 +272,7 @@ Besides, the constants on each subtest are letting us know what's important for 
 On the other hand, we still need to process each of the lines of each subtest and translate that into natural language
 inside our brains 🧠 Wait, this rings a bell; we've talked about natural language before!
 And something like a path in a map with some instructions...
-Exactly, in cases where there's logic to process, it's always easier if the code tell us exactly what the intention was.
+Exactly, in cases where there's logic to process, it's normally easier if the code tell us exactly what the intention was.
 
 Each of these subtests are rather easy to read and understand. That's not always the case.
 More often than not, tests occupy several lines to set them up and assert results.
@@ -306,7 +306,7 @@ Should we try to map a couple of those existing subtests into acceptance criteri
 ```txt
 Given a user that doesn't own a space,
 When deleting the space
-Then a not an owned space error is be returned
+Then a not owned space error is be returned
 
 Given the default space of a user,
 When deleting the space
@@ -314,7 +314,7 @@ Then an unremovable default space error is be returned
 ```
 
 Interesting, don't you think? If you're wondering why this looks so familiar, chances are that you've seen `gherkin` 🥒
-before: an ordinary language parser normally used when writing behaviour driven development.
+before: an ordinary language parser normally used when writing behaviour driven development tests.
 But worry not, we're not gonna use that here.
 
 What we'll do, though, is to rewrite our tests, this time using natural language.
@@ -379,7 +379,7 @@ t.Run("errors when removing the default space", func(t *testing.T) {
 })
 ```
 
-Now, this is easier to read 🧘‍♂️ There's good, not so good and bad things going on here.
+Now, this is easier to read 🧘‍♂️ There're good, not so good and bad things going on here.
 
 Let's talk about the goods first. I don't need to understand every single line of code in the test to know what the
 intention was at first glance. Navigating test scenarios is simpler now and common language from your business has been
@@ -399,7 +399,7 @@ tests, we were using an `assertErrorEquals` method to compare two errors, as opp
 error check. This is avoidable by allowing to pass arguments to the helpers.
 However, I feel those end up complicating the helpers and taking consistency away from this approach. When introduced,
 it becomes harder to see where the limit is on the arguments being passed around. They also make your scenarios more
-dependant on the helpers, possibly ending up in scenarios that send random data as those arguments as they are simply
+dependant on the helpers, possibly ending up in scenarios that send random data to those arguments as they are simply
 not relevant. It's a totally valid way of doing this, but this is one of those where consistency actually helps.
 Regardless, it's also a good chat to have among team members.
 
@@ -408,7 +408,7 @@ Keeping the scenarios as we have them now prevents us not only from parallelizin
 but also lead to undesired side effects that become just way to hard to debug when tests leave modified scenarios.
 
 Luckily for us, the solution for this problem is rather simple. And it uses principles that we've already seen in the
-[semantic types][types] entry! In that article, we suggested the idea that we can model behaviour within types for fun
+[semantic types][types] chapter! In that chapter, we suggested the idea that we can model behaviour within types for fun
 and profit. Well, tests can follow the same principles 🤷‍♂️  Let's try to do that step by step.
 
 ```go
@@ -590,7 +590,7 @@ func TestDeleteSpace(t *testing.T) {
 ```
 
 The tests pass, but they are not doing anything. However, we can now see the overall picture of their scenarios,
-reason about them, ask for feedback, change the keyboard to your pair, change the driver in a mob session,
+reason about them, ask for feedback, change the keyboard to your pairing partner, change the driver in a mob session,
 go for a walk and come back to the save point of your game. When I see myself in situations like those, I simply
 force one of the steps to fail and know exactly where I left off.
 
@@ -626,7 +626,7 @@ types and languages.
 
 You might have noticed that our production code has no dependencies. Keeping it that way actually helped iterate the
 code and tests throughout this explanation. But I do want to briefly tackle what changes our code and tests would
-require to fit test doubles in 👯 Check it out in the [test doubles][test-doubles] episode.
+require to fit test doubles in 👯 Check it out in the [test doubles][test-doubles] chapter.
 
 [fiunchinho]: https://github.com/fiunchinho
 [guard-clauses]: ../guard-clauses

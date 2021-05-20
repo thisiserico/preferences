@@ -3,7 +3,7 @@
 When we saw the [test doubles][test-doubles] 👯, by the end of the chapter, we realized that we had to create many
 spaces, when all them looked almost the same. The idea was to create spaces on the fly, each of them simulating one
 of the cases we had to test, in regards to validation. Although not ideal, as there was too much repetition,
-we managed with that. For today's episode, we're gonna give that yet another iteration to make our tests that rely
+we managed with that. For today's chapter, we're gonna give that yet another iteration to make our tests that rely
 on spaces more robust.
 
 To refresh our memories, this is our starting point:
@@ -153,7 +153,7 @@ func FilledWith(list []resource) BuilderOption {
 }
 
 func SpaceOwnedBy(userID string, opts ...BuilderOption) Space {
-    return rootSpace.tweak(opts...)
+    return rootSpace().tweak(opts...)
 }
 
 func rootSpace() Space {
