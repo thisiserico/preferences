@@ -29,7 +29,7 @@ We made it an interface for different reasons.
 First of all, because otherwise we can't really create a double out of it in `go`.
 And secondly, because we don't yet know what the actual contents of the methods will be.
 Even in that case, chances are we'll keep the interface, as we can sense that the contents will depend on an actual
-implementation. We'll discuss this further when we talk about hexagonal architecture.
+implementation. We'll discuss this further when we talk about [hexagonal architecture][hexagonal].
 
 See that `//go:generate` comment above the interface declaration? Yes, it looks cumbersome.
 Feel free to ignore that as it's not that relevant for the understanding of the example.
@@ -288,3 +288,4 @@ However, head over to the [functional options][functional-options] one first, as
 [tests]: ../tests
 [functional-options]: ../functional-options
 [builder-mother]: ../builder-mother
+[hexagonal]: ../../clean-architectures/hexagonal

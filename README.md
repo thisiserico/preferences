@@ -34,7 +34,7 @@ Mainly techniques and principles that I believe help build more robust and maint
 different architectures that focus on those same principles, testing strategies I cannot live without
 and a bunch of API related content.
 On the other hand, you most likely will not find tutorials to specific pieces of technology,
-comments regarding platforms or companies or anything I never had the chance to ecperience.
+comments regarding platforms or companies or anything I never had the chance to experience.
 
 Do not take this repo as a way to do things either. I don't use these stuff at all times myself! 🙅‍♀️
 Your own context and situation are to be evaluated before choosing an approach.
@@ -45,7 +45,7 @@ Everything you'll find are things that others use on their daily basis.
 
 ## 🗺️ How to navigate this repo?
 My suggestion is that you start at the [semantic types][semantic-types] chapter and find links to navigate from there.
-After those, I think moving onto hexagonal architecture (yet to come) is a good idea.
+After those, I think moving onto [hexagonal architecture][hexagonal] is a good idea.
 
 ## 🥺 How can you help?
 I'm always open to hear different opinions.
@@ -55,4 +55,5 @@ Feel free to open an issue or reach out on [twitter][twitter] to start a convers
 Same thing if you think there's something missing, erroneous, not clear or improvable 🙏
 
 [semantic-types]: ./code-semantics/types
+[hexagonal]: ./clean-architectures/hexagonal
 [twitter]: https://twitter.com/thisiserico
